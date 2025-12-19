@@ -191,3 +191,9 @@ External resources and AI tools were used strictly for **learning and clarificat
 ---
 
 *This repository is intended as a research-style portfolio project demonstrating applied deep learning for signals and images, with emphasis on rigor, evaluation, and transferability to quantitative domains.*
+
+---
+
+## Author
+MSc student Francesco Giuseppe Remondi, Imperial College London  
+(Repository cloned from original coursework submission for portfolio purposes.)
