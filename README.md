@@ -20,21 +20,21 @@ The projects focus on:
 
 Given paired samples:
 
-\[
+$$
 x_i \in \mathbb{R}^{H \times W}, \quad y_i \in \mathbb{R}^{H \times W}
-\]
+$$
 
 the goal is to learn a nonlinear mapping:
 
-\[
+$$
 f_\theta : x \mapsto y
-\]
+$$
 
 by minimizing a pixel-wise reconstruction loss:
 
-\[
-\mathcal{L}(\theta) = \frac{1}{N} \sum_{i=1}^N \ell(f_\theta(x_i), y_i)
-\]
+$$
+\mathcal{L}(\theta) = \frac{1}{N} \sum_{i=1}^N \ell\big(f_\theta(x_i), y_i\big)
+$$
 
 This task is conceptually analogous to:
 - signal denoising
@@ -53,13 +53,13 @@ Key design choices:
 - fully convolutional (input-size agnostic)
 - deliberately constrained capacity (~550k parameters) to control overfitting
 
-This mirrors the **bias–variance trade-offs** encountered in quantitative modeling.
+This mirrors the **bias–variance trade-off** common in quantitative modeling.
 
 ### Data Preprocessing
 
-- Winsorization at 1st–99th percentiles
-- Min–max normalization to \([0,1]\)
-- Identical preprocessing for train and validation sets
+- Winsorization at the 1st–99th percentiles
+- Min–max normalization to $[0,1]$
+- Identical preprocessing for training and validation sets
 
 This was critical to stabilize optimization and avoid domination by extreme values.
 
@@ -67,8 +67,8 @@ This was critical to stabilize optimization and avoid domination by extreme valu
 
 - Optimizer: Adam
 - Loss: MSE (with MAE / SSIM explored)
-- Learning-rate scheduling: ReduceLROnPlateau
-- Diagnostics: single-batch overfitting test
+- Learning-rate scheduling via ReduceLROnPlateau
+- Diagnostic: single-batch overfitting test
 
 Metrics:
 - MAE (robust absolute error)
@@ -85,7 +85,7 @@ Representative results:
 
 ### Problem Setting
 
-The second project addresses **ECG heartbeat classification**, a canonical noisy time-series problem with:
+The second project addresses **ECG heartbeat classification**, a noisy time-series problem with:
 - strong class imbalance (normal vs abnormal beats)
 - variable-length signals
 - high sensitivity to local temporal patterns
@@ -116,10 +116,10 @@ This setup closely resembles:
 
 ### Training Strategy
 
-- WeightedRandomSampler to address class imbalance
-- Macro-F1 prioritized over accuracy
+- WeightedRandomSampler to mitigate class imbalance
+- Macro-F1 prioritised over accuracy
 - Binary evaluation: normal vs abnormal beats
-- Careful separation of train and validation pipelines
+- Strict separation of training and validation pipelines
 
 ### Evaluation Metrics
 
@@ -140,14 +140,14 @@ Binary (normal vs abnormal):
 
 - The **simple 1D CNN outperformed more complex attention-based models**
 - Local temporal features dominate ECG beat discrimination
-- Added attention increased complexity without improving generalization
-- Class imbalance primarily affected precision for minority classes
+- Attention increased complexity without improving generalisation
+- Class imbalance primarily reduced precision for minority classes
 
 ---
 
 ## Quantitative Finance Relevance
 
-Across both projects, the work demonstrates:
+Across both projects, this work demonstrates:
 
 - translating abstract objectives into trainable models
 - handling noisy, high-dimensional signals
@@ -160,7 +160,7 @@ These skills directly transfer to:
 - forecasting under noise
 - anomaly detection
 - model validation and stress testing
-- experimental research workflows
+- research-style experimental workflows
 
 ---
 
@@ -168,7 +168,7 @@ These skills directly transfer to:
 
 - `Assessment_Q1.ipynb` — Dense U-Net cross-modal reconstruction
 - `Assessment_Q2.ipynb` — ECG classification with CNNs and attention
-- `References.md` — External resources and AI tool usage declaration
+- `References.md` — External resources and AI usage declaration
 - `README.md` — Project overview
 
 ---
@@ -178,7 +178,7 @@ These skills directly transfer to:
 - Python, PyTorch
 - NumPy, Matplotlib
 - scikit-learn
-- Weights & Biases (experiment tracking)
+- Weights & Biases
 - GPU-accelerated training
 
 ---
